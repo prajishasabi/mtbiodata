@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        #preview {
+            display: none;
+            background-color: blueviolet;
+        }
+    </style>
+
+</head>
+
+<body class="bg-secondary">
+    <div class="container" id="generate">
+        <h2 class="text-center pt-3">Resume Builder</h2>
+        <div class="row">
+            <div class="col-md-6 p-5 bg-info mt-3 ">
+                <h3 class="text-center">Personal Information</h3>
+                <div class="preview">
+                    <img id="file-ip-1-preview" />
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event)" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="fname" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" class="form-control" min="18">
+                </div>
+                <div class="form-group pt-2">
+                    <label for="gender"
+                        class="text-center">Gender</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="male" class="text-center">Male</label>
+                    <input type="radio" id="male" name="gender" value="Male">
+                    <label for="female">Female</label>
+                    <input type="radio" id="female" name="gender" value="Female">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6 p-5 bg-info mt-3">
+                <h3 class="text-center">Professional Information</h3>
+
+                <div class="form-group">
+                    <label for="qualifications">Qualifications</label>
+                    <textarea id="qualifications" class="form-control" rows="6"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Skills">Technical Skills</label>
+                    <textarea id="skills" class="form-control" rows="5">
+
+                </textarea>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="experiences">Experiences</label>
+                    <textarea id="experiences" class="form-control" rows="5"></textarea>
+                </div> -->
+            </div>
+
+        </div>
+
+        <div class="container text-center mt-3 mb-5">
+            <a href="#preview"> <button class="btn btn-primary btn-lg" onclick="generatecv()">Generate CV</button></a>
+        </div>
+    </div>
+    <!-- <section id="preview"> -->
+
+
+
+    <div class="container ml-20 bg-info" id="preview">
+
+        <div class="row ">
+            <header class=" text-center pt-3">
+                <h3>Resume</h3>
+            </header>
+        </div>
+        <div class="row">
+            <div class="col-md-6 p-5 mt-20">
+                <div id="previewdiv" style="height:100px;width:100px">
+                    <img id="file-ip-1-preview1" />
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <div class="row ">
+
+            <div class="col-md-6 p-5 mt-5 bg-info">
+                <h3 class="text-center">About</h3>
+                <!-- <div class="form-group">
+                </div> -->
+                <div class="form-group pb-4">
+                    <label for="name">Name:</label>
+                    <label id="name_preview"></label>
+                </div>
+                <div class="form-group pb-4">
+                    <label for="dob">Date of Birth:</label>
+                    <label id="dob_preview"></label>
+                </div>
+                <div class="form-group pb-4 ">
+                    <label for="age">Age:</label>
+                    <label id="age_preview"></label>
+
+                </div>
+                <div class="form-group pb-4">
+                    <label for="gender">Gender:</label>
+                    <label id="gender_preview"></label>
+
+                </div>
+
+                <div class="form-group pb-4">
+                    <label for="email">Email:</label>
+                    <label id="email_preview"></label>
+                </div>
+                <div class="form-group pb-4">
+                    <label for="phone">Phone:</label>
+                    <label id="phone_preview"></label>
+
+                </div>
+                <div class="form-group pb-4">
+                    <label for="address">Address:</label>
+                    <label id="address_preview"></label>
+                </div>
+            </div>
+
+            <!-- <div class="row"> -->
+            <div class="col-md-6 p-5 bg-white mt-5" style="border:1px solid black">
+                <h3 class="text-center">Professional Information</h3>
+
+                <div class="form-group pb-5">
+                    <label for="qualifications">Qualifications:</label>
+                    <label id="qualifications_preview"></label>
+                </div>
+
+                <div class="form-group pb-5">
+                    <label for="skills">Technical Skills:</label>
+                    <label id="skills_preview"></label>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container text-center mt-5 ">
+            <a href="#"> <button class="btn btn-primary btn-lg" onclick="editcv()">Edit</button></a>
+
+            <a href="#"> <button class="btn btn-primary btn-lg " onclick="deletecv()">Delete</button></a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script>
+
+
+        function generatecv() {
+
+            document.getElementById('preview').style.display = 'block';
+            document.getElementById('generate').style.display = 'none';
+            // document.getElementById('imagediv').style.display = "block";
+            var preview = document.getElementById("file-ip-1-preview").src;
+            document.getElementById("file-ip-1-preview1").src=preview;
+
+
+            // var txt_image = document.getElementById('image').value;
+            // console.log(txt_image);
+            var txt_name = document.getElementById('fname').value;
+            var txt_dob = document.getElementById('dob').value;
+            var txt_age = document.getElementById('age').value;
+            var gender_male = document.getElementById('male');
+            // var gender_female = document.getElementById('female');
+            var txt_email = document.getElementById('email').value;
+            var txt_phone = document.getElementById('phone').value;
+
+            var txt_address = document.getElementById('address').value;
+            var txt_qualifications = document.getElementById('qualifications').value;
+
+            var txt_skills = document.getElementById('skills').value;
+
+            // console.log(txt_name)
+            // const img1 = document.getElementById('imagediv2');
+            // img1.setAttribute('src', txt_image);
+            //document.getElementById('imagediv').value = txt_image.
+
+            document.getElementById('name_preview').innerHTML = txt_name
+            document.getElementById('dob_preview').innerHTML = txt_dob
+
+            document.getElementById('age_preview').innerHTML = txt_age
+            if (gender_male.checked == 1) {
+                document.getElementById('gender_preview').innerHTML = 'Male'
+            }
+            else {
+                // if(gender_female.checked==1){
+                document.getElementById('gender_preview').innerHTML = 'Female'
+            }
+
+
+
+            document.getElementById('email_preview').innerHTML = txt_email
+
+            document.getElementById('phone_preview').innerHTML = txt_phone
+
+            document.getElementById('address_preview').innerHTML = txt_address
+            document.getElementById('qualifications_preview').innerHTML = txt_qualifications
+
+            document.getElementById('skills_preview').innerHTML = txt_skills
+        }
+        function editcv() {
+            document.getElementById('generate').style.display = 'block';
+            document.getElementById('preview').style.display = 'none';
+
+
+        }
+        function deletecv() {
+            document.getElementById('preview').style.display = 'none';
+
+            document.getElementById('generate').style.display = 'block';
+            document.getElementById("file-ip-1-preview").src="";
+            document.getElementById("file-ip-1").value="";
+
+            document.getElementById('fname').value = " ";
+            document.getElementById('dob').value = " ";
+            document.getElementById('age').value = " "
+            if (document.getElementById('male').checked = true) {
+                document.getElementById('male').checked = false;
+
+            }
+            if (document.getElementById('female').checked = true) {
+                document.getElementById('female').checked = false;
+
+            }
+            document.getElementById('email').value = " ";
+            document.getElementById('phone').value = " ";
+
+            document.getElementById('address').value = " ";
+            document.getElementById('qualifications').value = " ";
+
+            document.getElementById('skills').value = " ";
+        }
+        function showPreview(event) {
+            console.log(event);
+            if (event.target.files.length > 0) {
+                var src = URL.createObjectURL(event.target.files[0]);
+                var preview = document.getElementById("file-ip-1-preview");
+                preview.src = src;
+                preview.style.display = "block";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
